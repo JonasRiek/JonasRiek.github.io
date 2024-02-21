@@ -1,25 +1,24 @@
 ---
-    name: Super Linter
+  name: Lint
 
-    on: [push, pull_request]
-    
-    jobs:
-      build:
-        name: Lint Code Base
-        runs-on: ubuntu-latest
-    
-        steps:
-    
-          - name: Checkout Code
-            uses: actions/checkout@v3
-            with:
-              fetch-depth: 0
-    
-          - name: Lint Code Base
-            uses: github/super-linter@v4
-            env:
-              VALIDATE_ALL_CODEBASE: true
-              VALIDATE_JAVASCRIPT_ES: true
-              VALIDATE_HTML: true
-              VALIDATE_CSS: true
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  on:
+    pull_request:
+    push:
+      branches:
+        - master
+  
+  jobs:
+    eslint:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16
+        - run: npm ci # or yarn install
+        - uses: sibiraj-s/action-eslint@v3
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }} # optional
+            eslint-args: '--ignore-path=.gitignore --quiet'
+            extensions: 'js,jsx,ts,tsx'
+            annotations: true
