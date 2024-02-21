@@ -20,7 +20,6 @@
             env:
               VALIDATE_ALL_CODEBASE: true
               VALIDATE_JAVASCRIPT_ES: true
-              VALIDATE_PYTHON_BLACK: false
               VALIDATE_HTML: true
               VALIDATE_CSS: true
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
