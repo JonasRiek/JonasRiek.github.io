@@ -10,14 +10,14 @@ let noise = true;
 let on = false;
 let win;
 
-const turnCounter = document.querySelector("#turn");
-const topLeft = document.querySelector("#topleft");
-const topRight = document.querySelector("#topright");
-const bottomLeft = document.querySelector("#bottomleft");
-const bottomRight = document.querySelector("#bottomright");
-const strictButton = document.querySelector("#strict");
-const onButton = document.querySelector("#on");
-const startButton = document.querySelector("#start");
+const turnCounter = document.querySelector('#turn');
+const topLeft = document.querySelector('#topleft');
+const topRight = document.querySelector('#topright');
+const bottomLeft = document.querySelector('#bottomleft');
+const bottomRight = document.querySelector('#bottomright');
+const strictButton = document.querySelector('#strict');
+const onButton = document.querySelector('#on');
+const startButton = document.querySelector('#start');
 
 strictButton.addEventListener('click', (event) => {
   if (strictButton.checked == true) {
@@ -30,10 +30,10 @@ strictButton.addEventListener('click', (event) => {
 onButton.addEventListener('click', (event) => {
   if (onButton.checked == true) {
     on = true;
-    turnCounter.innerHTML = "-";
+    turnCounter.innerHTML = '-';
   } else {
     on = false;
-    turnCounter.innerHTML = "";
+    turnCounter.innerHTML = '';
     clearColor();
     clearInterval(intervalId);
   }
@@ -45,6 +45,9 @@ startButton.addEventListener('click', (event) => {
   }
 });
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function play() {
   win = false;
   order = [];
@@ -54,7 +57,7 @@ function play() {
   turn = 1;
   turnCounter.innerHTML = 1;
   good = true;
-  for (var i = 0; i < 20; i++) {
+  for (let i = 0; i < 20; i++) {
     order.push(Math.floor(Math.random() * 4) + 1);
   }
   compTurn = true;
@@ -62,6 +65,9 @@ function play() {
   intervalId = setInterval(gameTurn, 800);
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function gameTurn() {
   on = false;
 
@@ -84,54 +90,72 @@ function gameTurn() {
   }
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function one() {
   if (noise) {
-    let audio = document.getElementById("clip1");
+    const audio = document.getElementById('clip1');
     audio.play();
   }
   noise = true;
-  topLeft.style.backgroundColor = "lightgreen";
+  topLeft.style.backgroundColor = 'lightgreen';
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function two() {
   if (noise) {
-    let audio = document.getElementById("clip2");
+    const audio = document.getElementById('clip2');
     audio.play();
   }
   noise = true;
-  topRight.style.backgroundColor = "tomato";
+  topRight.style.backgroundColor = 'tomato';
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function three() {
   if (noise) {
-    let audio = document.getElementById("clip3");
+    const audio = document.getElementById('clip3');
     audio.play();
   }
   noise = true;
-  bottomLeft.style.backgroundColor = "yellow";
+  bottomLeft.style.backgroundColor = 'yellow';
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function four() {
   if (noise) {
-    let audio = document.getElementById("clip4");
+    const audio = document.getElementById('clip4');
     audio.play();
   }
   noise = true;
-  bottomRight.style.backgroundColor = "lightskyblue";
+  bottomRight.style.backgroundColor = 'lightskyblue';
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function clearColor() {
-  topLeft.style.backgroundColor = "darkgreen";
-  topRight.style.backgroundColor = "darkred";
-  bottomLeft.style.backgroundColor = "goldenrod";
-  bottomRight.style.backgroundColor = "darkblue";
+  topLeft.style.backgroundColor = 'darkgreen';
+  topRight.style.backgroundColor = 'darkred';
+  bottomLeft.style.backgroundColor = 'goldenrod';
+  bottomRight.style.backgroundColor = 'darkblue';
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function flashColor() {
-  topLeft.style.backgroundColor = "lightgreen";
-  topRight.style.backgroundColor = "tomato";
-  bottomLeft.style.backgroundColor = "yellow";
-  bottomRight.style.backgroundColor = "lightskyblue";
+  topLeft.style.backgroundColor = 'lightgreen';
+  topRight.style.backgroundColor = 'tomato';
+  bottomLeft.style.backgroundColor = 'yellow';
+  bottomRight.style.backgroundColor = 'lightskyblue';
 }
 
 topLeft.addEventListener('click', (event) => {
@@ -139,56 +163,60 @@ topLeft.addEventListener('click', (event) => {
     playerOrder.push(1);
     check();
     one();
-    if(!win) {
+    if (!win) {
       setTimeout(() => {
         clearColor();
       }, 300);
     }
   }
-})
+});
 
 topRight.addEventListener('click', (event) => {
   if (on) {
     playerOrder.push(2);
     check();
     two();
-    if(!win) {
+    if (!win) {
       setTimeout(() => {
         clearColor();
       }, 300);
     }
   }
-})
+});
 
 bottomLeft.addEventListener('click', (event) => {
   if (on) {
     playerOrder.push(3);
     check();
     three();
-    if(!win) {
+    if (!win) {
       setTimeout(() => {
         clearColor();
       }, 300);
     }
   }
-})
+});
 
 bottomRight.addEventListener('click', (event) => {
   if (on) {
     playerOrder.push(4);
     check();
     four();
-    if(!win) {
+    if (!win) {
       setTimeout(() => {
         clearColor();
       }, 300);
     }
   }
-})
+});
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function check() {
-  if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1])
+  if (playerOrder[playerOrder.length - 1] !== order[playerOrder.length - 1]) {
     good = false;
+  }
 
   if (playerOrder.length == 3 && good) {
     winGame();
@@ -196,7 +224,7 @@ function check() {
 
   if (good == false) {
     flashColor();
-    turnCounter.innerHTML = "NO!";
+    turnCounter.innerHTML = 'NO!';
     setTimeout(() => {
       turnCounter.innerHTML = turn;
       clearColor();
@@ -223,18 +251,14 @@ function check() {
     turnCounter.innerHTML = turn;
     intervalId = setInterval(gameTurn, 800);
   }
-
 }
 
+/**
+This is a multi line comment to please the Google Styleguide
+*/
 function winGame() {
   flashColor();
-  turnCounter.innerHTML = "WIN!";
+  turnCounter.innerHTML = 'WIN!';
   on = false;
   win = true;
 }
-
-
-
-
-
-
