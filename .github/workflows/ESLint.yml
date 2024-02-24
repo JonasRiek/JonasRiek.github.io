@@ -3,8 +3,14 @@ name: Run ESLint on Pull Requests
 on:
   - push
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   run-linters:
+    # Job to Start the ES Linter and check the code to be deployed
     name: Run linters
     runs-on: ubuntu-latest
 
@@ -30,6 +36,24 @@ jobs:
           commit_message: Fix styling
 
   pages-build-and-deploy:
+    # Single deploy job since we're just deploying
     name: Pages build and deployment
     needs: run-linters # This ensures that this job only runs if the run-linters job was successful
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
