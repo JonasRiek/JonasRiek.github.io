@@ -37,7 +37,7 @@ onButton.addEventListener('click', (event) => {
     clearColor();
     clearInterval(intervalId);
   }
-});
+
 
 startButton.addEventListener('click', (event) => {
   if (on || win) {
