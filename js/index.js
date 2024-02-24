@@ -29,15 +29,15 @@ strictButton.addEventListener('click', (event) => {
 
 onButton.addEventListener('click', (event) => {
   if (onButton.checked == true) {
-    on = true
-    turnCounter.innerHTML = '-'
+    on = true;
+    turnCounter.innerHTML = '-';
   } else {
     on = false;
     turnCounter.innerHTML = '';
     clearColor();
     clearInterval(intervalId);
   }
-});
+
 
 startButton.addEventListener('click', (event) => {
   if (on || win) {
