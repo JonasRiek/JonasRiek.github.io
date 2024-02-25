@@ -39,11 +39,13 @@ onButton.addEventListener('click', (event) => {
   }
 });
 
+// this is a trivial Change to the Code, to test
+
 startButton.addEventListener('click', (event) => {
   if (on || win) {
     play();
   }
-});
+
 
 /**
 This is a multi line comment to please the Google Styleguide
