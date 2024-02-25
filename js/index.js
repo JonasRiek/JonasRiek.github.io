@@ -43,7 +43,7 @@ startButton.addEventListener('click', (event) => {
   if (on || win) {
     play();
   }
-
+});
 
 /**
 This is a multi line comment to please the Google Styleguide
