@@ -39,13 +39,11 @@ onButton.addEventListener('click', (event) => {
   }
 });
 
-// This is a test if the second jub does not run any more
-
 startButton.addEventListener('click', (event) => {
   if (on || win) {
     play();
   }
-});
+
 
 /**
 This is a multi line comment to please the Google Styleguide
