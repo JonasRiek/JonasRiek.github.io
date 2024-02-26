@@ -4,7 +4,7 @@ on:
   - push
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -33,6 +33,7 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
+          commit_message: Fix styling
 
   pages-build-and-deploy:
     # Single deploy job since we're just deploying
