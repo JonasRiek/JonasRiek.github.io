@@ -3,7 +3,7 @@ name: Run ESLint on Pull Requests
 on:
   - push
 
-permissions:
+permissions: 
   contents: write
   pages: write
   id-token: write
