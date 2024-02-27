@@ -1,9 +1,9 @@
-name: Run ESLint on Pull Requests
+name: Run ESLint on Push Requests
 
 on:
   - push
 
-permissions: 
+permissions:
   contents: write
   pages: write
   id-token: write
@@ -15,20 +15,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Check out Git repository
       - name: Check out Git repository
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # ESLint must be in `package.json`
+      # Install Node.js dependencies
       - name: Install Node.js dependencies
         run: npm ci
 
+      # Run linters
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
@@ -36,7 +39,7 @@ jobs:
           commit_message: Fix styling
 
   pages-build-and-deploy:
-    # Single deploy job since we're just deploying
+    # Single deploy & build job 
     name: Pages build and deployment
     if: ${{ needs.run-linters.result == 'success' }}
     needs: run-linters # This ensures that this job only runs if the run-linters job was successful
@@ -46,15 +49,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
+      # Upload artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
+
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 
+        uses: actions/deploy-pages@v4
