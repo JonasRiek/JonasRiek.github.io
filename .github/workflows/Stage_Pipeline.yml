@@ -1,4 +1,4 @@
-name: Run ESLint on Push Requests
+name: Stage Pipeline
 
 on:
   push:
