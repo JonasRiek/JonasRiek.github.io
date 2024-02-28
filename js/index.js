@@ -25,7 +25,7 @@ strictButton.addEventListener('click', (event) => {
   } else {
     strict = false;
   }
-
+});
 
 onButton.addEventListener('click', (event) => {
   if (onButton.checked == true) {

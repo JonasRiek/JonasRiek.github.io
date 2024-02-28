@@ -1,0 +1,42 @@
+name: Run ESLint on Push Requests
+
+on:
+  push:
+    branches:
+        - 'stage'
+  
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  run-linters:
+    # Job to Start the ES Linter and check the code to be deployed
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out Git repository
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Install Node.js dependencies
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      # Run linters
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          commit_message: Fix styling
