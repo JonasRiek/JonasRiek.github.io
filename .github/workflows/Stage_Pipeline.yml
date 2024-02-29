@@ -1,21 +1,23 @@
 name: Stage Pipeline
 
 on:
+  # Defines this Pipeline only to Run on the 'stage' by a push and a push into it
   push:
     branches:
-        - 'stage'
-  pull_request:      
+      - 'stage'
+  pull_request:
     branches:
-        - 'stage'
-  
+      - 'stage'
+
 permissions:
+  # Provides the needed permissions to the generated Token
   contents: write
   pages: write
   id-token: write
 
 jobs:
   run-linters:
-    # Job to Start the ES Linter and check the code to be deployed
+    # Job to start the ESLint and check the code to be deployed
     name: Run linters
     runs-on: ubuntu-latest
 

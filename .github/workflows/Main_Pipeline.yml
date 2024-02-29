@@ -1,18 +1,20 @@
 name: Main Pipeline
 
 on:
+  # Defines this Pipeline only to Run on the 'main' by a push
   push:
     branches:
-        - 'main'
+      - 'main'
 
 permissions:
+  # Provides the needed permissions to the generated Token
   contents: write
   pages: write
   id-token: write
 
 jobs:
   run-linters:
-    # Job to Start the ES Linter and check the code to be deployed
+    # Job to start the ESLint and check the code to be deployed
     name: Run linters
     runs-on: ubuntu-latest
 
@@ -41,7 +43,7 @@ jobs:
           commit_message: Fix styling
 
   pages-build-and-deploy:
-    # Single deploy & build job 
+    # Single deploy & build job
     name: Pages build and deployment
     if: ${{ needs.run-linters.result == 'success' }}
     needs: run-linters # This ensures that this job only runs if the run-linters job was successful
