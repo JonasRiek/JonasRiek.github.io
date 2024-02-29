@@ -4,8 +4,10 @@ on:
   push:
     branches:
         - 'stage'
+  pull_request:      
+    branches:
+        - 'stage'
   
-
 permissions:
   contents: write
   pages: write
