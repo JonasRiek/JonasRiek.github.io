@@ -27,7 +27,6 @@ strictButton.addEventListener('click', (event) => {
   }
 });
 
-
 onButton.addEventListener('click', (event) => {
   if (onButton.checked == true) {
     on = true;
@@ -45,6 +44,16 @@ startButton.addEventListener('click', (event) => {
     play();
   }
 });
+
+// eslint-disable-next-line valid-jsdoc
+/**
+This is a multi line comment to please the Google Styleguide
+*/
+function sum(a, b) {
+  return a + b;
+}
+
+module.exports = sum;
 
 /**
 This is a multi line comment to please the Google Styleguide
