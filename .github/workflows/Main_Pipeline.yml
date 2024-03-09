@@ -42,11 +42,31 @@ jobs:
           eslint: true
           commit_message: Fix styling
 
+  test:
+    name: Unit Test
+    if: ${{ needs.run-linters.result == 'success' }}
+    needs: run-linters # This ensures that this job only runs if the run-linters job was successful
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Install required deps for action
+      - name: Install Dependencies
+        run: npm install
+
+      # Finally, run our tests
+      - name: Run the tests
+        run: npm test        
+
   pages-build-and-deploy:
     # Single deploy & build job
     name: Pages build and deployment
-    if: ${{ needs.run-linters.result == 'success' }}
-    needs: run-linters # This ensures that this job only runs if the run-linters job was successful
+    if: ${{ needs.test.result == 'success' }}
+    needs: test # This ensures that this job only runs if the run-linters job was successful
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
