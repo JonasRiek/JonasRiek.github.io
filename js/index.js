@@ -45,16 +45,6 @@ startButton.addEventListener('click', (event) => {
   }
 });
 
-// eslint-disable-next-line valid-jsdoc
-/**
-This is a multi line comment to please the Google Styleguide
-*/
-function sum(a, b) {
-  return a + b;
-}
-
-module.exports = sum;
-
 /**
 This is a multi line comment to please the Google Styleguide
 */
@@ -167,6 +157,12 @@ function flashColor() {
   bottomLeft.style.backgroundColor = 'yellow';
   bottomRight.style.backgroundColor = 'lightskyblue';
 }
+
+// Export of the functions to play.test.js
+module.exports = {
+  clearColor: clearColor,
+  flashColor: flashColor,
+};
 
 topLeft.addEventListener('click', (event) => {
   if (on) {
