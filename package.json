@@ -1,14 +1,25 @@
 {
   "devDependencies": {
+    "@babel/preset-env": "^7.24.0",
     "eslint": "^8.56.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
     "prettier": "3.2.5"
   },
   "scripts": {
-    "eslint:github-action": "eslint src/"
+    "eslint:github-action": "eslint src/",
+    "test": "jest --coverage --env=jsdom"
+  },
+  "transform": {
+    "\\.js$": "<rootDir>/index"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "jest-environment-jsdom": "^29.7.0",
+    "path": "^0.12.7"
   }
 }
