@@ -158,7 +158,11 @@ function flashColor() {
   bottomRight.style.backgroundColor = 'lightskyblue';
 }
 
-module.exports = flashColor;
+// Export of the functions to play.test.js
+module.exports = {
+  clearColor: clearColor,
+  flashColor: flashColor,
+};
 
 topLeft.addEventListener('click', (event) => {
   if (on) {

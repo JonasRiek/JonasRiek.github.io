@@ -12,7 +12,7 @@
   },
   "scripts": {
     "eslint:github-action": "eslint src/",
-    "test": "jest --coverage --env=jsdom"
+    "test": "jest --env=jsdom"
   },
   "transform": {
     "\\.js$": "<rootDir>/index"
