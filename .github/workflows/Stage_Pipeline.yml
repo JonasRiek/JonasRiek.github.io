@@ -47,8 +47,8 @@ jobs:
 
   test:
     name: Unit Test
-   # if: ${{ needs.run-linters.result == 'success' }}
-   # needs: run-linters # This ensures that this job only runs if the run-linters job was successful
+    if: ${{ needs.run-linters.result == 'success' }}
+    needs: run-linters # This ensures that this job only runs if the run-linters job was successful
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
