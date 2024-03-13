@@ -1,7 +1,7 @@
 // jest.config.js
 module.exports = {
   transform: {
-    '\\.js$': 'babel-jest', // Use Babel to transform .js files
+    '\\.js$': 'babel-jest', // Verwende Babel, um .js-Dateien zu transformieren
   },
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jsdom', // Testumgebung: jsdom
 };

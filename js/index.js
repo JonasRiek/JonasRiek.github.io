@@ -156,7 +156,7 @@ function flashColor() {
   topRight.style.backgroundColor = 'tomato';
   bottomLeft.style.backgroundColor = 'yellow';
   bottomRight.style.backgroundColor = 'lightskyblue';
-}
+
 
 // Export of the functions to play.test.js
 module.exports = {

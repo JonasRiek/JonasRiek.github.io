@@ -1,15 +1,15 @@
 // babel.config.js
 module.exports = function(api) {
-  api.cache(true); // Enable caching for faster builds
+  api.cache(true); // Aktiviere Caching für schnellere Builds
 
   const presets = [
-    // Add your desired presets here
+    // Gewünschte Presets für Umgebung und ...
     '@babel/preset-env',
     '@babel/preset-react',
   ];
 
   const plugins = [
-    // Add your desired plugins here
+    // Füge hier deine gewünschten Plugins hinzu
     '@babel/plugin-proposal-class-properties',
   ];
 
