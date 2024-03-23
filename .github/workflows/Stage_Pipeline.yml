@@ -79,6 +79,6 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: snyk_sarif
+          sarif_file: snyk_sarif_test
 
 
