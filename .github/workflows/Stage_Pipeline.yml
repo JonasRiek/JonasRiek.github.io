@@ -75,6 +75,8 @@ jobs:
         run: snyk code test --sarif > snyk_sarif
         env:
           SNYK_TOKEN: ${{ github.head_ref }}
+      - name: Output Snyk File to Console
+        run: cat snyk_sarif     
       - name: Upload results to Github Code Scanning
         uses: github/codeql-action/upload-sarif@v3
         with:
