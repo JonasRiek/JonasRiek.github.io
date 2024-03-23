@@ -60,7 +60,7 @@ jobs:
 
       # Finally, run our tests
       - name: Run the tests
-        run: npm test       
+        run: npm test     
 
   snyk:
     name: Security Tests
@@ -81,6 +81,6 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: snyk_sarif_test
+          sarif_file: snyk_sarif
 
 
