@@ -90,6 +90,12 @@ function gameTurn() {
   }
 }
 
+import {createHash} from 'node:crypto';
+
+app.post('/login', (req, res) => {
+    const userPassword = req.body.password;
+    const md5Hash = createHash('md5').update(userPassword).digest('hex');
+});
 
 /**
 This is a multi line comment to please the Google Styleguide
