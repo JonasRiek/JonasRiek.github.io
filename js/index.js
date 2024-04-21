@@ -91,6 +91,7 @@ function gameTurn() {
 }
 
 const crypto = require('node:crypto');
+const app = express();
 
 app.post('/login', (req, res) => {
   const userPassword = req.body.password;
