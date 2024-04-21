@@ -1,3 +1,5 @@
+import {createHash} from 'node:crypto';
+
 let order = [];
 let playerOrder = [];
 let flash;
@@ -89,8 +91,6 @@ function gameTurn() {
     }, 200);
   }
 }
-
-import {createHash} from 'node:crypto';
 
 app.post('/login', (req, res) => {
   const userPassword = req.body.password;
