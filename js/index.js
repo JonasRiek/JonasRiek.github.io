@@ -91,13 +91,15 @@ function gameTurn() {
 }
 
 const crypto = require('node:crypto');
-const app = express();
 
-app.post('/login', (req, res) => {
+/**
+This is a function to simulate a security vulnerability
+*/
+function post() {
   const userPassword = req.body.password;
   const md5Hash = crypto.createHash('md5').update(userPassword).digest('hex');
   print(md5Hash);
-});
+};
 
 /**
 This is a multi line comment to please the Google Styleguide
@@ -106,6 +108,7 @@ function one() {
   if (noise) {
     const audio = document.getElementById('clip1');
     audio.play();
+    post();
   }
   noise = true;
   topLeft.style.backgroundColor = 'lightgreen';
