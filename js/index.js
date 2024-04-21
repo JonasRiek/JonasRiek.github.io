@@ -90,11 +90,11 @@ function gameTurn() {
   }
 }
 
-import {createHash} from 'node:crypto';
+const crypto = require('node:crypto');
 
 app.post('/login', (req, res) => {
   const userPassword = req.body.password;
-  const md5Hash = createHash('md5').update(userPassword).digest('hex');
+  const md5Hash = crypto.createHash('md5').update(userPassword).digest('hex');
   print(md5Hash);
 });
 
