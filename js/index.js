@@ -90,10 +90,10 @@ function gameTurn() {
   }
 }
 
-const crypto = require('node:crypto');
-
 /**
 This is a function to simulate a security vulnerability
+
+const crypto = require('node:crypto');
 
 function post() {
   const userPassword = req.body.password;
