@@ -19,8 +19,6 @@
     "\\.js$": "<rootDir>/index"
   },
   "dependencies": {
-    "crypto": "^1.0.1",
-    "fs": "^0.0.1-security",
     "jest-environment-jsdom": "^29.7.0",
     "path": "^0.12.7",
     "snyk": "^1.1285.0"
