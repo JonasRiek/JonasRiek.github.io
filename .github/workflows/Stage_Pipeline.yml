@@ -9,11 +9,8 @@ on:
     branches:
       - 'stage'
 
-permissions:
+permissions: write-all 
   # Provides the needed permissions to the generated Token
-  contents: write
-  pages: write
-  id-token: write
 
 jobs:
   run-linters:
@@ -63,7 +60,27 @@ jobs:
 
       # Finally, run our tests
       - name: Run the tests
-        run: npm test          
+        run: npm test     
 
+  snyk:
+    name: Security Tests
+    if: ${{ needs.test.result == 'success' }}
+    needs: test # This ensures that this job only runs if the test job was successful
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snyk/actions/setup@master
+      - name: Snyk Code Test
+        continue-on-error: true
+        run: snyk code test --sarif > snyk_sarif
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Output Snyk File to Console
+        run: cat snyk_sarif     
+      - name: Upload results to Github Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: snyk_sarif
 
 
