@@ -21,6 +21,6 @@
   "dependencies": {
     "jest-environment-jsdom": "^29.7.0",
     "path": "^0.12.7",
-    "snyk": "^1.1285.0"
+    "snyk": "^1.1291.0"
   }
 }
